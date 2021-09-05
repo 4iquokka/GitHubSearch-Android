@@ -1,4 +1,4 @@
 package com.shinyj.githubsearch.datastore.network
 
-interface GitHubService {
+interface GitHubApiService {
 }
