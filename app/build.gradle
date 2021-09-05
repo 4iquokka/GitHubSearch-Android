@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'de.mannodermaus.android-junit5'
 }
 
 android {
@@ -10,8 +14,8 @@ android {
         applicationId "com.shinyj.githubsearch"
         minSdk 23
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 1_000_000 // 1.0.0
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,22 +26,74 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    def coroutine_version = "1.3.9"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    def ktx_version = "1.6.0"
+    implementation "androidx.core:core-ktx:$ktx_version"
+
+    def appcompat_version = "1.3.1"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+
+    def material_version = "1.4.0"
+    implementation "com.google.android.material:material:$material_version"
+
+    def constraint_version= "2.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+
+    def fragment_version = "1.4.0-alpha08"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    def navigation_version = "2.4.0-alpha08"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigation_version"
+
+    def retrofit2_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    def hilt_version = "2.37"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    def leak_canary_version = "2.7"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+
+    def junit5_version = "5.7.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+
+    def mock_web_server_version = "4.9.1"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_web_server_version"
+
+    def espresso_core_version = "3.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+
+    def espresso_runner = "1.1.0"
+    androidTestImplementation "androidx.test:runner:$espresso_runner"
+
+    def espresso_rules_version = "1.4.0"
+    androidTestImplementation "androidx.test:rules:$espresso_rules_version"
+
+    def junit_ktx_version = "1.1.3"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$junit_ktx_version"
+
 }
