@@ -3,7 +3,7 @@ package com.shinyj.githubsearch.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.shinyj.githubsearch.datastore.network.GitHubApiService
-import com.shinyj.githubsearch.util.Constants
+import com.shinyj.githubsearch.datastore.network.util.NetworkConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +28,7 @@ object AppModule {
     @Provides
     fun provideRetrofitBuilder(gsonBuilder: Gson): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(NetworkConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
     }
 
