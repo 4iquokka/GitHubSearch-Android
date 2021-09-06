@@ -6,7 +6,7 @@ sealed class NetworkResult<out T> {
 
     data class GenericError(
         val errorCode : Int? = null,
-        val errorMessage : Int? = null
+        val errorMessage : String? = null
     ) : NetworkResult<Nothing>()
 
     object NetworkError: NetworkResult<Nothing>()

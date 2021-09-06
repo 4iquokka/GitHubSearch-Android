@@ -1,15 +1,19 @@
 package com.shinyj.githubsearch.repository
 
-import com.shinyj.githubsearch.domain.model.Repository
+import com.shinyj.githubsearch.domain.state.DataState
+import com.shinyj.githubsearch.domain.state.StateEvent
+import com.shinyj.githubsearch.presentation.search.state.SearchViewState
+import kotlinx.coroutines.flow.Flow
 
 interface GitHubRepository {
 
-    suspend fun search(
+    fun search(
         query : String,
         sort : String?,
         order : String?,
         size: Int,
         page: Int,
-    ) : List<Repository>
+        stateEvent : StateEvent
+    ) : Flow<DataState<SearchViewState>?>
 
 }

@@ -22,7 +22,7 @@ abstract class NetworkResponseHandler<ViewState, Data>(
             is NetworkResult.NetworkError -> {
                 DataState.error(
                     response = Response(
-                        message = NetworkErrors.NETWORK_ERROR,
+                        message = NetworkErrors.ERROR_NETWORK,
                         uiComponentType = UIComponentType.Toast(),
                         messageType = MessageType.Error()
                     ),
@@ -34,7 +34,7 @@ abstract class NetworkResponseHandler<ViewState, Data>(
                 if(response.value == null){
                     DataState.error(
                         response = Response(
-                            message = NetworkErrors.NETWORK_DATA_NULL,
+                            message = NetworkErrors.ERROR_NETWORK_DATA_NULL,
                             uiComponentType = UIComponentType.Toast(),
                             messageType = MessageType.Error()
                         ),
