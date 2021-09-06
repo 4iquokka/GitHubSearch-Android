@@ -4,6 +4,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.shinyj.githubsearch.datastore.network.GitHubApiService
 import com.shinyj.githubsearch.datastore.network.util.NetworkConstants
+import com.shinyj.githubsearch.repository.GitHubRepository
+import com.shinyj.githubsearch.repository.GitHubRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,6 +40,14 @@ object AppModule {
         return retrofitBuilder
             .build()
             .create(GitHubApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGitHubRepository(
+        gitHubApiService: GitHubApiService
+    ) : GitHubRepository {
+        return GitHubRepositoryImpl(gitHubApiService)
     }
 
 }
