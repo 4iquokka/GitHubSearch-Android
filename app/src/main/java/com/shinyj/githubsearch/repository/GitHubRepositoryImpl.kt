@@ -2,9 +2,10 @@ package com.shinyj.githubsearch.repository
 
 import com.shinyj.githubsearch.datastore.network.GitHubApiService
 import com.shinyj.githubsearch.datastore.network.responses.RepositorySearchResponse
+import com.shinyj.githubsearch.datastore.network.responses.toList
 import com.shinyj.githubsearch.datastore.network.util.NetworkResponseHandler
 import com.shinyj.githubsearch.domain.state.*
-import com.shinyj.githubsearch.presentation.search.state.SearchViewState
+import com.shinyj.githubsearch.presentation.repositorylist.state.RepositoryListViewState
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -21,7 +22,7 @@ constructor(
         size: Int,
         page: Int,
         stateEvent : StateEvent
-    ): Flow<DataState<SearchViewState>?> = flow {
+    ): Flow<DataState<RepositoryListViewState>?> = flow {
         if(query.isNotEmpty()) {
 
             val networkResult = safeNetworkCall(IO){
@@ -34,19 +35,21 @@ constructor(
                 )
             }
 
-            val networkResponse = object : NetworkResponseHandler<SearchViewState, RepositorySearchResponse>(
+            val networkResponse = object : NetworkResponseHandler<RepositoryListViewState, RepositorySearchResponse>(
                 response = networkResult,
                 stateEvent = stateEvent
             ) {
-                override suspend fun handleOnSuccess(resultObj: RepositorySearchResponse): DataState<SearchViewState>? {
+                override suspend fun handleOnSuccess(resultObj: RepositorySearchResponse): DataState<RepositoryListViewState>? {
                     return DataState.data(
                         response = Response(
-                            message = "",
+                            message = "Successfully fetched",
                             uiComponentType = UIComponentType.None(),
                             messageType = MessageType.Success()
                         ),
-                        data = SearchViewState(
-
+                        data = RepositoryListViewState(
+                            repositoryList = resultObj.toList(),
+                            isLastPage = resultObj.isLastPage,
+                            totalCount = resultObj.totalCount
                         ),
                         stateEvent = stateEvent
                     )

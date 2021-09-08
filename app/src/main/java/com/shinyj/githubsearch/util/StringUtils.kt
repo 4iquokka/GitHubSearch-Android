@@ -1,13 +1,14 @@
 package com.shinyj.githubsearch.util
 
+import kotlin.math.ln
+
 object StringUtils {
 
-    fun convertListToString(list: List<String>): String {
-        return list.joinToString(separator = ",")
-    }
+    fun withSuffix(number: Long) : String{
+        if(number < 1000)
+            return number.toString()
 
-    fun convertStringToList(string: String?): List<String> {
-        return string?.split(",")?.map { it.trim() } ?: listOf()
+        val exp = (ln(number.toDouble()) / ln(1000.toDouble())).toInt()
+        return String.format("%.1f %c", number/Math.pow(1000.0, exp.toDouble()), "kMGTPE"[exp -1])
     }
-
 }

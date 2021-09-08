@@ -21,6 +21,8 @@ abstract class DataChannelManager<ViewState> {
 
     val stateMessageQueue = StateMessageQueue()
 
+    val shouldDisplayProgressBar = stateEventManager.shouldDisplayProgressBar
+
     fun setDataChannel() {
         cancelJobs()
     }
@@ -108,5 +110,6 @@ abstract class DataChannelManager<ViewState> {
     }
 
     fun clearStateMessages() = stateMessageQueue.clear()
+
 
 }

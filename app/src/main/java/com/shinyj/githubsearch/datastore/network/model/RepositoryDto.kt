@@ -1,32 +1,45 @@
 package com.shinyj.githubsearch.datastore.network.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.shinyj.githubsearch.domain.model.Repository
 
 class RepositoryDto (
 
     @SerializedName("id")
-    val id : Int,
+    @Expose
+    val id : Long,
 
     @SerializedName("full_name")
+    @Expose
     val name : String,
 
     @SerializedName("description")
-    val description : String,
+    @Expose
+    val description : String?,
+
+    @SerializedName("html_url")
+    @Expose
+    val url : String?,
 
     @SerializedName("stargazers_count")
-    val numOfStars : Int,
+    @Expose
+    val numOfStars : Long,
 
     @SerializedName("forks")
-    val numOfForks : Int,
+    @Expose
+    val numOfForks : Long,
 
     @SerializedName("watchers")
-    val numOfWatchers : Int,
+    @Expose
+    val numOfWatchers : Long,
 
     @SerializedName("created_at")
+    @Expose
     val createdAt: String,
 
     @SerializedName("updated_at")
+    @Expose
     val updatedAt: String?
 
 )
@@ -36,6 +49,7 @@ fun RepositoryDto.toRepository(): Repository {
         id = id,
         name = name,
         description = description,
+        url = url,
         numOfStars = numOfStars,
         numOfForks = numOfForks,
         numOfWatchers = numOfWatchers,

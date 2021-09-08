@@ -1,17 +1,17 @@
 package com.shinyj.githubsearch.domain.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Repository(
-    val id : Int,
+    val id : Long,
     val name : String,
-    val description : String,
-    val numOfStars : Int,
-    val numOfForks : Int,
-    val numOfWatchers : Int,
+    val description : String?,
+    val url : String?,
+    val numOfStars : Long,
+    val numOfForks : Long,
+    val numOfWatchers : Long,
     val createdAt: String,
     val updatedAt: String?
 ) : Parcelable {
@@ -25,6 +25,7 @@ data class Repository(
         if (id != other.id) return false
         if (name != other.name) return false
         if (description != other.description) return false
+        if (url != other.url) return false
         if (numOfStars != other.numOfStars) return false
         if (numOfForks != other.numOfForks) return false
         if (numOfWatchers != other.numOfWatchers) return false
@@ -35,20 +36,19 @@ data class Repository(
     }
 
     override fun hashCode(): Int {
-        var result = id
+        var result = id.hashCode()
         result = 31 * result + name.hashCode()
-        result = 31 * result + description.hashCode()
-        result = 31 * result + numOfStars
-        result = 31 * result + numOfForks
-        result = 31 * result + numOfWatchers
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (url?.hashCode() ?: 0)
+        result = 31 * result + numOfStars.hashCode()
+        result = 31 * result + numOfForks.hashCode()
+        result = 31 * result + numOfWatchers.hashCode()
         result = 31 * result + createdAt.hashCode()
         result = 31 * result + (updatedAt?.hashCode() ?: 0)
         return result
     }
 
     override fun toString(): String {
-        return "Repository(id=$id, name='$name', description='$description', numOfStars=$numOfStars, numOfForks=$numOfForks, numOfWatchers=$numOfWatchers, createdAt='$createdAt', updatedAt=$updatedAt)"
+        return "Repository(id=$id, name='$name', description=$description, url=$url, numOfStars=$numOfStars, numOfForks=$numOfForks, numOfWatchers=$numOfWatchers, createdAt='$createdAt', updatedAt=$updatedAt)"
     }
-
-
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txt_name"
+            style="@style/Repository.Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_description"
+            style="@style/Repository.Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_name" />
+
+        <TextView
+            android:id="@+id/txt_stars"
+            style="@style/Repository.Meters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:drawableLeftCompat="@drawable/ic_round_star_20"
+            app:drawableTint="@color/gray_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+        <TextView
+            android:id="@+id/txt_watchers"
+            style="@style/Repository.Meters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:drawableLeftCompat="@drawable/ic_round_watching_eye_20"
+            app:drawableTint="@color/gray_700"
+            app:layout_constraintBottom_toBottomOf="@id/txt_stars"
+            app:layout_constraintLeft_toRightOf="@id/txt_stars"
+            app:layout_constraintTop_toTopOf="@id/txt_stars" />
+
+        <TextView
+            android:id="@+id/txt_forks"
+            style="@style/Repository.Meters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:drawableLeftCompat="@drawable/ic_git_fork_20"
+            app:drawableTint="@color/gray_700"
+            app:layout_constraintBottom_toBottomOf="@id/txt_stars"
+            app:layout_constraintLeft_toRightOf="@id/txt_watchers"
+            app:layout_constraintTop_toTopOf="@id/txt_stars" />
+
+        <TextView
+            android:id="@+id/txt_date"
+            style="@style/Repository.Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txt_stars"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_stars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GitHubSearch" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.GitHubSearch" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,60 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="AppBar"/>
+
+    <style name="AppBar.Title">
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppBar.Search">
+        <item name="android:background">@drawable/bg_round_all_10</item>
+        <item name="android:drawableStart">@drawable/ic_round_search_24</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:drawableTint">@color/gray_700</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray_500</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Repository" />
+
+    <style name="Repository.Name">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+    </style>
+
+    <style name="Repository.Description">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_500</item>
+    </style>
+
+    <style name="Repository.Meters">
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textColor">@color/gray_500</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Repository.Date">
+        <item name="android:textColor">@color/gray_500</item>
+    </style>
+
 </resources>

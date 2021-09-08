@@ -22,6 +22,9 @@ abstract class BaseViewModel<ViewState> : ViewModel() {
             }
         }
 
+    val shouldDisplayProgressBar : LiveData<Boolean>
+    get() = dataChannelManager.shouldDisplayProgressBar
+
     val stateMessage: LiveData<StateMessage?>
         get() = dataChannelManager.stateMessageQueue.stateMessage
 
@@ -72,6 +75,8 @@ abstract class BaseViewModel<ViewState> : ViewModel() {
     fun clearActiveStateEvent() = dataChannelManager.clearActiveStateEvents()
 
     fun clearStateMessages() = dataChannelManager.clearStateMessages()
+
+    fun isJobAlreadyActive(stateEvent : StateEvent) : Boolean = dataChannelManager.isJobAlreadyActive(stateEvent)
 
     fun cancelActiveJobs() = dataChannelManager.cancelJobs()
 

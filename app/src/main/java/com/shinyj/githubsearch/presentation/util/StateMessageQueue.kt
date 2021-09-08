@@ -7,7 +7,6 @@ import com.shinyj.githubsearch.domain.state.Response
 import com.shinyj.githubsearch.domain.state.StateMessage
 import com.shinyj.githubsearch.domain.state.UIComponentType
 import kotlinx.parcelize.IgnoredOnParcel
-import java.lang.IndexOutOfBoundsException
 
 /**
  * This ArrayList acts as Queue

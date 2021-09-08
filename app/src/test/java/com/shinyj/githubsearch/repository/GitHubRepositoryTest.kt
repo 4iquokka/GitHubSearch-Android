@@ -5,6 +5,7 @@ import com.shinyj.githubsearch.datastore.network.GitHubApiService
 import okhttp3.HttpUrl
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

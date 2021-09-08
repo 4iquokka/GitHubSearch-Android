@@ -9,15 +9,22 @@
         android:id="@+id/splashFragment"
         android:name="com.shinyj.githubsearch.presentation.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            android:id="@+id/action_splashFragment_to_repositoryListFragment"
+            app:destination="@id/repositoryListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.shinyj.githubsearch.presentation.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/repositoryListFragment"
+        android:name="com.shinyj.githubsearch.presentation.repositorylist.RepositoryListFragment"
+        android:label="fragment_repository_list"
+        tools:layout="@layout/fragment_repository_list" />
 </navigation>
