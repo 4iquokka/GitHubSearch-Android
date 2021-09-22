@@ -1,5 +1,7 @@
 # GitHubSearch-Android
-- Simple Android application to search for public GitHub repositories
+- Simple Android application to search for GitHub repositories
+- Clean architecture (introduced by Uncle Bob) without modularization of domain and data layer
+- Model-View-Intent (MVI) architecture for the presentation layer
 
 # Requirements
 
@@ -34,4 +36,7 @@
 <img width="806" alt="Screen Shot 2021-09-05 at 6 36 34 PM" src="https://user-images.githubusercontent.com/18553206/132122349-0cf7bd1b-d10c-4cef-babb-b64d5c48046f.png">
 
 
+# Screenshots
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/18553206/134289352-6aa56b57-dc67-417f-aca0-1b7169f923ee.gif)
 
